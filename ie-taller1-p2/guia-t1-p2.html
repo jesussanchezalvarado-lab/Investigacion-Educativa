@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Investigación Educativa — ULagos</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ulagos-blue: #0057A8;
+    --ulagos-blue-dark: #003D7A;
+    --ulagos-blue-light: #E6F1FB;
+    --ulagos-blue-mid: #B5D4F4;
+    --accent-teal: #1D9E75;
+    --accent-teal-light: #E1F5EE;
+    --accent-amber: #BA7517;
+    --accent-amber-light: #FAEEDA;
+    --accent-red: #A32D2D;
+    --accent-red-light: #FCEBEB;
+    --accent-coral: #993C1D;
+    --accent-coral-light: #FAECE7;
+    --gray-50: #F8F8F6;
+    --gray-100: #F1EFE8;
+    --gray-200: #D3D1C7;
+    --gray-400: #888780;
+    --gray-700: #444441;
+    --gray-900: #2C2C2A;
+    --white: #ffffff;
+    --border: 1px solid rgba(0,0,0,0.1);
+    --radius: 10px;
+    --radius-lg: 16px;
+    --shadow: 0 2px 12px rgba(0,87,168,0.08);
+    --shadow-hover: 0 6px 24px rgba(0,87,168,0.15);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Source Sans 3', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+  html {
+    scroll-behavior: smooth;
+  }
+    font-family: var(--font-body);
+    background: var(--gray-50);
+    color: var(--gray-900);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .site-header {
+    background: var(--ulagos-blue);
+    color: white;
+    padding: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,61,122,0.25);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.75rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    max-width: 140px;
+    max-height: 60px;
+    object-fit: contain;
+  }
+
+  .header-text h1 { font-size: 1rem; font-weight: 600; letter-spacing: 0.01em; font-family: var(--font-body); }
+  .header-text p { font-size: 0.78rem; opacity: 0.75; font-weight: 300; }
+  .header-badge {
+    margin-left: auto;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 0.25rem 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* NAV */
+  .nav-strip {
+    background: var(--ulagos-blue-dark);
+    overflow-x: auto;
+  }
+  .nav-strip-inner {
+    display: flex;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .nav-strip a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.6rem 1rem;
+    white-space: nowrap;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-strip a:hover { color: white; border-bottom-color: white; }
+
+  /* MAIN */
+  .main-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--ulagos-blue) 0%, var(--ulagos-blue-dark) 100%);
+    border-radius: var(--radius-lg);
+    color: white;
+    padding: 2.5rem 2.5rem 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: 60px;
+    bottom: -60px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 0.5rem;
+  }
+  .hero h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .hero p { font-size: 0.92rem; opacity: 0.8; max-width: 560px; line-height: 1.6; }
+  .hero-meta {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item { font-size: 0.8rem; opacity: 0.7; }
+  .hero-meta-item strong { opacity: 1; font-weight: 600; display: block; font-size: 0.88rem; }
+
+  /* PROGRESS */
+  .progress-bar-wrap {
+    background: white;
+    border-radius: var(--radius);
+    border: var(--border);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+  }
+  .progress-label { font-size: 0.78rem; color: var(--gray-400); font-weight: 500; margin-bottom: 0.6rem; display: flex; justify-content: space-between; }
+  .progress-track { background: var(--gray-100); border-radius: 100px; height: 8px; }
+  .progress-fill {
+    height: 8px;
+    border-radius: 100px;
+    background: var(--ulagos-blue);
+    width: 0%;
+    transition: width 0.5s ease;
+  }
+
+  /* SECTIONS */
+  .section { margin-bottom: 2.5rem; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .section-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ulagos-blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ulagos-blue-dark);
+  }
+  .section-subtitle { font-size: 0.8rem; color: var(--gray-400); font-weight: 400; }
+
+  /* CARDS */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    border: var(--border);
+    padding: 1.25rem 1.25rem 1rem;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+  .card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 0.75rem;
+  }
+  .card-icon.blue { background: var(--ulagos-blue-light); }
+  .card-icon.teal { background: var(--accent-teal-light); }
+  .card-icon.amber { background: var(--accent-amber-light); }
+  .card-icon.coral { background: var(--accent-coral-light); }
+  .card h3 { font-size: 0.92rem; font-weight: 600; color: var(--gray-900); margin-bottom: 0.4rem; }
+  .card p { font-size: 0.82rem; color: var(--gray-700); line-height: 1.55; }
+  .card .ref-tag {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.72rem;
+    background: var(--ulagos-blue-light);
+    color: var(--ulagos-blue);
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  /* COLLAPSIBLES */
+  .collapsible { margin-bottom: 0.75rem; }
+  .collapse-trigger {
+    width: 100%;
+    background: white;
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 0.9rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    text-align: left;
+    box-shadow: var(--shadow);
+    transition: background 0.15s;
+  }
+  .collapse-trigger:hover { background: var(--gray-50); }
+  .collapse-trigger .chevron {
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .collapse-trigger.open .chevron { transform: rotate(180deg); }
+  .collapse-trigger .ct-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .ct-blue { background: var(--ulagos-blue-light); color: var(--ulagos-blue); }
+  .ct-teal { background: var(--accent-teal-light); color: var(--accent-teal); }
+  .ct-amber { background: var(--accent-amber-light); color: var(--accent-amber); }
+  .ct-red { background: var(--accent-red-light); color: var(--accent-red); }
+  .collapse-trigger h3 { font-size: 0.88rem; font-weight: 600; color: var(--gray-900); }
+  .collapse-trigger p { font-size: 0.77rem; color: var(--gray-400); margin-top: 1px; }
+  .collapse-body {
+    display: none;
+    background: white;
+    border: var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    padding: 1.25rem;
+  }
+  .collapse-body.open { display: block; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* CONTENT STYLES */
+  .definition-box {
+    background: var(--ulagos-blue-light);
+    border-left: 3px solid var(--ulagos-blue);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1rem;
+  }
+  .definition-box p { font-size: 0.83rem; color: var(--ulagos-blue-dark); line-height: 1.55; }
+  .definition-box strong { font-weight: 600; }
+
+  .cite {
+    font-size: 0.73rem;
+    color: var(--ulagos-blue);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .level-list { list-style: none; }
+  .level-list li {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.7rem 0;
+    border-bottom: 0.5px solid var(--gray-100);
+    align-items: flex-start;
+  }
+  .level-list li:last-child { border-bottom: none; }
+  .level-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .lb-blue { background: var(--ulagos-blue-light); color: var(--ulagos-blue-dark); }
+  .lb-teal { background: var(--accent-teal-light); color: #085041; }
+  .lb-amber { background: var(--accent-amber-light); color: #633806; }
+  .level-list li p { font-size: 0.82rem; color: var(--gray-700); line-height: 1.5; }
+  .level-list li strong { color: var(--gray-900); font-weight: 600; }
+
+  .verb-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  .verb-pill {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid;
+    cursor: default;
+    transition: transform 0.15s;
+  }
+  .verb-pill:hover { transform: scale(1.04); }
+  .vp-blue { background: var(--ulagos-blue-light); color: var(--ulagos-blue-dark); border-color: var(--ulagos-blue-mid); }
+  .vp-teal { background: var(--accent-teal-light); color: #0F6E56; border-color: #9FE1CB; }
+  .vp-amber { background: var(--accent-amber-light); color: #854F0B; border-color: #FAC775; }
+
+  /* TAXONOMY PYRAMID */
+  /* NUEVA TAXONOMÍA: RECTÁNGULOS */
+  .collapse-box {
+    margin-bottom: 12px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    transition: all 0.3s ease;
+  }
+
+  .collapse-header {
+    background-color: var(--gray-50);
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .collapse-header:hover {
+    background-color: var(--ulagos-blue-light);
+  }
+
+  .ch-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #2d3748; /* Esto es un gris muy oscuro, casi negro, que queda más elegante */
+  }
+
+  .ch-icon {
+    font-size: 0.8rem;
+    color: var(--ulagos-blue);
+    transition: transform 0.3s ease;
+  }
+
+  .collapse-header.open .ch-icon {
+    transform: rotate(180deg);
+  }
+
+  .collapse-body {
+    display: none;
+    padding: 20px 24px;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  .collapse-body.open {
+    display: block;
+  }
+
+  .nota-fase {
+    font-size: 0.85rem;
+    color: var(--accent-coral);
+    background: var(--accent-coral-light);
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .lista-verbos {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+  }
+
+  .lista-verbos li {
+    background: var(--gray-50);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    border-left: 3px solid var(--ulagos-blue-mid);
+  }
+
+  /* STRUCTURE FORMULA */
+  .formula {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    background: var(--gray-50);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    border: var(--border);
+  }
+  .formula-part {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .formula-sep { color: var(--gray-400); font-size: 1.2rem; font-weight: 300; }
+  .fp-1 { background: var(--ulagos-blue-light); color: var(--ulagos-blue-dark); }
+  .fp-2 { background: var(--accent-teal-light); color: #0F6E56; }
+  .fp-3 { background: var(--accent-amber-light); color: #633806; }
+  .fp-4 { background: #FAECE7; color: #712B13; }
+
+  /* ERRORS SECTION */
+  .error-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .error-card {
+    background: white;
+    border: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .error-header {
+    background: var(--accent-red-light);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .error-header span { font-size: 0.82rem; font-weight: 600; color: var(--accent-red); }
+  .error-body { padding: 1rem; }
+  .error-body .wrong {
+    background: #FFF5F5;
+    border-left: 3px solid #E24B4A;
+    border-radius: 0 6px 6px 0;
+    padding: 0.6rem 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.78rem;
+    color: var(--gray-700);
+    font-style: italic;
+  }
+  .error-body .right {
+    background: var(--accent-teal-light);
+    border-left: 3px solid var(--accent-teal);
+    border-radius: 0 6px 6px 0;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.78rem;
+    color: #085041;
+    font-style: italic;
+  }
+  .error-body p { font-size: 0.79rem; color: var(--gray-700); margin-bottom: 0.5rem; }
+
+  /* CHECKLIST */
+  .checklist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+  .checklist-section {
+    background: white;
+    border: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .checklist-head {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .ch-blue { background: var(--ulagos-blue-light); color: var(--ulagos-blue-dark); }
+  .ch-teal { background: var(--accent-teal-light); color: #085041; }
+  .ch-amber { background: var(--accent-amber-light); color: #633806; }
+  .ch-gray { background: var(--gray-100); color: var(--gray-700); }
+  .checklist-items { padding: 0.75rem 1rem; }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    border-bottom: 0.5px solid var(--gray-100);
+    cursor: pointer;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    accent-color: var(--ulagos-blue);
+    margin-top: 1px;
+  }
+  .check-item label { font-size: 0.79rem; color: var(--gray-700); line-height: 1.45; cursor: pointer; }
+  .check-item.checked label { text-decoration: line-through; color: var(--gray-400); }
+
+  /* BIBLIOGRAPHY */
+  .bib-list { list-style: none; }
+  .bib-list li {
+    background: white;
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--gray-700);
+    line-height: 1.55;
+    box-shadow: var(--shadow);
+  }
+  .bib-list li strong { font-weight: 600; color: var(--ulagos-blue-dark); }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--ulagos-blue-mid);
+  }
+  .tl-item { position: relative; margin-bottom: 1.25rem; }
+  .tl-dot {
+    position: absolute;
+    left: -2rem;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--ulagos-blue);
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--ulagos-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: white;
+  }
+  .tl-content {
+    background: white;
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    box-shadow: var(--shadow);
+  }
+  .tl-week { font-size: 0.7rem; font-weight: 600; color: var(--ulagos-blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem; }
+  .tl-task { font-size: 0.82rem; color: var(--gray-700); }
+  .tl-task strong { font-weight: 600; color: var(--gray-900); }
+
+  /* QUESTION FORMULA */
+  .question-box {
+    background: var(--gray-50);
+    border-radius: var(--radius);
+    padding: 1rem;
+    border: var(--border);
+    margin: 0.75rem 0;
+  }
+  .qb-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 0.35rem; }
+  .qb-example { font-size: 0.84rem; color: var(--gray-900); font-style: italic; line-height: 1.5; }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--ulagos-blue-dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 1.25rem 2rem;
+    font-size: 0.75rem;
+    margin-top: 3rem;
+  }
+  .site-footer strong { color: rgba(255,255,255,0.85); }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .main-wrap { padding: 1rem; }
+    .hero { padding: 1.5rem 1.25rem; }
+    .hero h2 { font-size: 1.5rem; }
+    .header-inner { padding: 0.75rem 1rem; }
+    .header-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <img src="logoula.png" alt="Logo ULagos" class="logo">
+    
+    <div class="header-text">
+      <h1>Universidad de Los Lagos</h1>
+      <p>Departamento de Educación · Licenciatura en Educación</p>
+    </div>
+    <div class="header-badge">Investigación Educativa</div>
+  </div>
+  <nav class="nav-strip">
+    <div class="nav-strip-inner">
+      <a href="#objetivos">Objetivos</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#delimitacion">Delimitación</a>
+      <a href="#viabilidad">Viabilidad</a>
+      <a href="#errores">Errores comunes</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#bibliografia">Bibliografía</a>
+    </div>
+  </nav>
+</header>
+
+<main class="main-wrap">
+
+<div class="hero">
+    <p class="hero-eyebrow">Taller Informe N° 1</p>
+    <h2>Guía Interactiva de Planteamiento del Problema</h2>
+    <p>Una referencia completa para construir con rigor y claridad los componentes fundamentales de tu proyecto de investigación educativa.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>Asignatura</strong>Investigación Educativa</div>
+      <div class="hero-meta-item"><strong>Carreras Pedagógicas</strong>Licenciatura en Educación</div>
+      <div class="hero-meta-item"><strong>Semestre</strong>2026</div>
+ </div>
+  </div> 
+
+  <div class="progress-bar-wrap">
+    <div class="progress-label">
+      <span>Progreso del checklist</span>
+      <span id="progress-pct">0 / 24 ítems completados</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </div>
+<style>
+  /* Mayor separación entre las secciones principales */
+  .section {
+    margin-bottom: 4rem; 
+  }
+</style>
+
+<section class="section" id="preguntas">
+  <div class="section-header">
+    <div class="section-number">1</div>
+    <div>
+      <div class="section-title">Preguntas de Investigación</div>
+      <div class="section-subtitle">Formulación · relación con objetivos · requisitos</div>
+    </div>
+  </div>
+
+  <div class="definition-box">
+    <p><strong>¿Para qué?</strong> Las preguntas orientan hacia las respuestas que se buscan con la investigación. No deben utilizar términos ambiguos ni abstractos. <span class="cite">— Hernández et al. (2014, p. 38)</span></p>
+  </div>
+
+  <div class="collapsible">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <div class="ct-icon ct-blue">❓</div>
+      <div><h3>Cómo formular la pregunta principal</h3><p>Requisitos y estructura recomendada</p></div>
+      <div class="chevron">▼</div>
+    </button>
+    <div class="collapse-body">
+      <ul class="level-list">
+        <li><span class="level-badge lb-blue">Abierta</span><p>Debe comenzar con <strong>¿Cómo?, ¿Por qué?, ¿Cuál?, ¿De qué manera?</strong> — no puede responderse con sí o no. <span class="cite">Hernández et al., 2014, p. 38</span></p></li>
+        <li><span class="level-badge lb-teal">Específica</span><p>Debe incluir: <strong>qué se investiga + en quiénes + en qué lugar/tiempo</strong>. Las preguntas demasiado generales no conducen a una investigación concreta.</p></li>
+        <li><span class="level-badge lb-amber">Resoluble</span><p>Debe ser respondible mediante <strong>evidencia empírica</strong> (datos observables o medibles). Si la respuesta ya se conoce, no tiene sentido investigar. <span class="cite">Hernández et al., 2014, p. 39</span></p></li>
+      </ul>
+      <div class="question-box" style="margin-top:1rem">
+        <div class="qb-label">Fórmula recomendada</div>
+        <div class="qb-example"><em>"¿De qué manera [evento/fenómeno] influye en [variable o resultado] en [unidades de estudio] de [contexto] durante [periodo]?"</em></div>
+      </div>
+      <div class="question-box">
+        <div class="qb-label">Pregunta débil (demasiado general)</div>
+        <div class="qb-example" style="color:var(--accent-red)"><em>"¿Cómo se relacionan los medios de comunicación con el aprendizaje?"</em></div>
+      </div>
+      <div class="question-box">
+        <div class="qb-label">Pregunta mejorada (específica y acotada)</div>
+        <div class="qb-example" style="color:#0F6E56"><em>"¿De qué manera el uso de TIC en el aula incide en la motivación intrínseca de estudiantes de 7° básico en establecimientos municipales de Osorno durante el segundo semestre de 2026?"</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="objetivos">
+  <div class="section-header">
+    <div class="section-number">2</div>
+    <div>
+      <div class="section-title">Objetivos de Investigación</div>
+      <div class="section-subtitle">General y específicos · estructura · taxonomía · errores frecuentes</div>
+    </div>
+  </div>
+
+  <div class="definition-box">
+    <p><strong>¿Qué son?</strong> Los objetivos señalan a lo que se aspira en la investigación y deben expresarse con claridad, pues son las guías del estudio. <span class="cite">— Hernández et al. (2014, p. 37)</span></p>
+  </div>
+
+  <div class="collapsible">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <div class="ct-icon ct-blue">🔷</div>
+      <div><h3>Estructura de un objetivo bien redactado</h3><p>Cuatro componentes obligatorios</p></div>
+      <div class="chevron">▼</div>
+    </button>
+    <div class="collapse-body">
+      <div class="formula">
+        <div class="formula-part fp-1">Verbo en infinitivo</div>
+        <div class="formula-sep">+</div>
+        <div class="formula-part fp-2">Evento de estudio</div>
+        <div class="formula-sep">+</div>
+        <div class="formula-part fp-3">Unidad de estudio</div>
+        <div class="formula-sep">+</div>
+        <div class="formula-part fp-4">Contexto / lugar</div>
+      </div>
+      <ul class="level-list">
+        <li>
+          <span class="level-badge lb-blue">Verbo</span>
+          <p><strong>Indica la acción o logro esperado.</strong> Determina el grado de complejidad cognitiva. Debe estar en infinitivo (analizar, describir, comparar…).</p>
+        </li>
+        <li>
+          <span class="level-badge lb-teal">Evento</span>
+          <p><strong>La característica, hecho o proceso a estudiar.</strong> Define el fenómeno central de la investigación.</p>
+        </li>
+        <li>
+          <span class="level-badge lb-amber">Unidad</span>
+          <p><strong>A quiénes se investiga.</strong> Personas, objetos, instituciones, ciudades, documentos, etc.</p>
+        </li>
+        <li>
+          <span class="level-badge lb-blue">Contexto</span>
+          <p><strong>Lugar específico</strong> donde se realizará la investigación. Ej: "escuelas municipales de Osorno".</p>
+        </li>
+      </ul>
+      <div class="question-box">
+        <div class="qb-label">Ejemplo correcto</div>
+        <div class="qb-example"><em>"<u>Comparar</u> [verbo] <u>las prácticas educativas efectivas</u> [evento] en <u>tres escuelas municipales</u> [unidad] <u>de la comuna de Osorno, Chile</u> [contexto]."</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible" style="margin-top: 1rem;">
+    <button class="collapse-trigger" onclick="toggleCollapse(this)">
+      <div class="ct-icon ct-amber">🎯</div>
+      <div><h3>General vs. Específicos: relación lógica</h3><p>Los específicos son los pasos para alcanzar el general</p></div>
+      <div class="chevron">▼</div>
+    </button>
+    <div class="collapse-body">
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon blue">🌐</div>
+          <h3>Objetivo General</h3>
+          <p>Expresa el propósito central del estudio. Debe ser el "espejo" de tu pregunta de investigación. Abarca la totalidad del fenómeno a estudiar. <strong>Un solo objetivo general.</strong></p>
+          <span class="ref-tag">Hernández et al., 2014, p. 37</span>
+        </div>
+        <div class="card">
+          <div class="card-icon teal">🔍</div>
+          <h3>Objetivos Específicos</h3>
+          <p>Son los pasos lógicos y secuenciales para lograr el objetivo general. Corresponden a las <strong>fases de la investigación</strong>. Se requieren mínimo tres. Ninguno puede superar en complejidad al general.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="taxonomia">
+  <div class="section-header">
+    <div>
+    </div>
+  </div>
+<section class="section" id="verbos-general">
+  <div class="section-header">
+    <div class="section-number">3</div>
+    <div>
+      <div class="section-title">Verbos para el Objetivo General</div>
+      <div class="section-subtitle">Alternativas a "Analizar" según el enfoque de tu tesis</div>
+    </div>
+  </div>
+
+  <p style="margin-bottom: 1.5rem;">El verbo "Analizar" es muy común, pero a veces necesitas mayor precisión. Aquí tienes alternativas directas para tu objetivo principal:</p>
+
+  <div style="overflow-x: auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e1e4e8;">
+    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+      <thead>
+        <tr style="background-color: #f8f9fa; border-bottom: 2px solid #e1e4e8;">
+          <th style="padding: 12px 16px; color: #1a73e8;">Verbo</th>
+          <th style="padding: 12px 16px;">Intención principal</th>
+          <th style="padding: 12px 16px;">¿Cuándo elegirlo?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #e1e4e8;">
+          <td style="padding: 12px 16px;"><strong>Analizar</strong></td>
+          <td style="padding: 12px 16px;">Descomponer para entender.</td>
+          <td style="padding: 12px 16px; color: #5f6368;">Para explicar la lógica interna del fenómeno.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e1e4e8;">
+          <td style="padding: 12px 16px;"><strong>Determinar</strong></td>
+          <td style="padding: 12px 16px;">Fijar conclusiones o causas.</td>
+          <td style="padding: 12px 16px; color: #5f6368;">Para identificar factores concretos de un problema.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e1e4e8;">
+          <td style="padding: 12px 16px;"><strong>Caracterizar</strong></td>
+          <td style="padding: 12px 16px;">Definir rasgos distintivos.</td>
+          <td style="padding: 12px 16px; color: #5f6368;">Para estudios puramente descriptivos (decir "cómo es").</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e1e4e8;">
+          <td style="padding: 12px 16px;"><strong>Evaluar</strong></td>
+          <td style="padding: 12px 16px;">Juzgar efectividad.</td>
+          <td style="padding: 12px 16px; color: #5f6368;">Para medir si un programa o método funciona.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e1e4e8;">
+          <td style="padding: 12px 16px;"><strong>Interpretar</strong></td>
+          <td style="padding: 12px 16px;">Dar significado.</td>
+          <td style="padding: 12px 16px; color: #5f6368;">Para análisis cualitativos (entender percepciones y visiones).</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e1e4e8;">
+          <td style="padding: 12px 16px;"><strong>Contrastar</strong></td>
+          <td style="padding: 12px 16px;">Establecer diferencias.</td>
+          <td style="padding: 12px 16px; color: #5f6368;">Para comparar dos grupos, teoría vs práctica, o pre/post.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e1e4e8;">
+          <td style="padding: 12px 16px;"><strong>Sistematizar</strong></td>
+          <td style="padding: 12px 16px;">Ordenar una experiencia.</td>
+          <td style="padding: 12px 16px; color: #5f6368;">Para extraer aprendizajes de una intervención propia.</td>
+        </tr>
+<tr>
+          <td style="padding: 12px 16px;"><strong>Valorar</strong></td>
+          <td style="padding: 12px 16px;">Estimar el mérito.</td>
+          <td style="padding: 12px 16px; color: #5f6368;">Para resaltar el impacto positivo o negativo de una acción.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section> <section class="section" id="verbos-especificos">
+  <div class="section-header"> <div class="section-number">4</div>
+    <div>
+      <div class="section-title">Guía de Verbos para los Objetivos Específicos</div>
+      <div class="section-subtitle">Selecciona el verbo según la fase de tu investigación</div>
+    </div>
+  </div>
+  
+  <p style="margin-bottom: 1.5rem;">Para que tus objetivos específicos sean coherentes, elige los verbos según el momento del proceso:</p>
+
+  <div class="collapse-box">
+    <div class="collapse-header" onclick="toggleCollapse(this)">
+      <div class="ch-title">📘 Fase Teórica (Nivel Descriptivo)</div>
+      <div class="ch-icon">▼</div>
+    </div>
+    <div class="collapse-body">
+      <div class="nota-fase"><strong>Nota:</strong> Ideal para fundamentar el marco teórico.</div>
+      <ul class="lista-verbos">
+        <li>Identificar</li>
+        <li>Describir</li>
+        <li>Reconocer</li>
+        <li>Definir</li>
+        <li>Clasificar</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="collapse-box">
+    <div class="collapse-header" onclick="toggleCollapse(this)">
+      <div class="ch-title">🛠️ Fase Metodológica (Diseño)</div>
+      <div class="ch-icon">▼</div>
+    </div>
+    <div class="collapse-body">
+      <div class="nota-fase"><strong>Nota:</strong> Enfocado en la construcción del instrumento.</div>
+      <ul class="lista-verbos">
+        <li>Diseñar</li>
+        <li>Validar</li>
+        <li>Estructurar</li>
+        <li>Seleccionar</li>
+        <li>Operacionalizar</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="collapse-box">
+    <div class="collapse-header" onclick="toggleCollapse(this)">
+      <div class="ch-title">🔍 Fase Empírica (Resultados)</div>
+      <div class="ch-icon">▼</div>
+    </div>
+    <div class="collapse-body">
+      <div class="nota-fase"><strong>Nota:</strong> Para la discusión y hallazgos.</div>
+      <ul class="lista-verbos">
+        <li>Evidenciar</li>
+        <li>Comparar</li>
+        <li>Reconocer</li>
+        <li>Contrastar</li>
+        <li>Demostrar</li>
+      </ul>
+    </div>
+  </div>
+</section>
+  <!-- SECTION 3: DELIMITACIÓN -->
+  <section class="section" id="delimitacion">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div>
+        <div class="section-title">Delimitación del Problema</div>
+        <div class="section-subtitle">Espacial · temporal · sujetos</div>
+      </div>
+    </div>
+
+    <div class="definition-box">
+      <p><strong>¿Para qué delimitar?</strong> Es necesario establecer los límites temporales y espaciales del estudio (época y lugar) y esbozar un perfil de las unidades o casos que se analizarán. <span class="cite">— Hernández et al. (2014, p. 39); Ferreyra & De Longhi (2014, pp. 69-73)</span></p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon blue">📍</div>
+        <h3>Delimitación Espacial</h3>
+        <p>¿Dónde? Nombre del establecimiento o comuna. Ej: <em>"Liceo X de la comuna de Osorno"</em>. Si no hay acceso confirmado, indicar el nivel escolar y sector.</p>
+        <span class="ref-tag">Ferreyra & De Longhi, 2014, p. 69</span>
+      </div>
+      <div class="card">
+        <div class="card-icon teal">📅</div>
+        <h3>Delimitación Temporal</h3>
+        <p>¿Cuándo? Periodo específico de recolección de datos. Ej: <em>"segundo semestre académico del año 2026"</em>. Debe coincidir con la disponibilidad real.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon amber">👥</div>
+        <h3>Sujetos de Estudio</h3>
+        <p>¿A quiénes? Caracterizar con precisión: nivel escolar, rol, asignatura. Ej: <em>"estudiantes de enseñanza media"</em>, <em>"docentes de lenguaje"</em>, <em>"directivos"</em>.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon coral">📚</div>
+        <h3>Delimitación Teórica</h3>
+        <p>¿Desde qué enfoque? Definir los marcos conceptuales que guiarán el análisis. Evitar abarcar demasiadas teorías o perspectivas simultáneas.</p>
+        <span class="ref-tag">Ferreyra & De Longhi, 2014, p. 73</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: VIABILIDAD -->
+  <section class="section" id="viabilidad">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div>
+        <div class="section-title">Viabilidad de la Investigación</div>
+        <div class="section-subtitle">Recursos · acceso a muestra · ética · condicionantes</div>
+      </div>
+    </div>
+
+    <div class="definition-box">
+      <p><strong>¿Por qué es importante?</strong> Debemos tomar en cuenta la disponibilidad de tiempo, recursos financieros, humanos y materiales que determinarán, en última instancia, los alcances de la investigación. <span class="cite">— Hernández et al. (2014, p. 41)</span></p>
+    </div>
+
+    <div class="collapsible">
+      <button class="collapse-trigger" onclick="toggleCollapse(this)">
+        <div class="ct-icon ct-teal">✅</div>
+        <div><h3>Dimensiones a evaluar</h3><p>Tres ejes de factibilidad y cinco condiciones contextuales</p></div>
+        <div class="chevron">▼</div>
+      </button>
+      <div class="collapse-body">
+        <ul class="level-list">
+          <li>
+            <span class="level-badge lb-blue">Recursos</span>
+            <p>Acceso a bibliografía, conexión a internet, tiempo de trabajo, equipos necesarios (computador, grabadora, etc.). ¿Se cuenta con lo mínimo indispensable?</p>
+          </li>
+          <li>
+            <span class="level-badge lb-teal">Acceso a muestra</span>
+            <p>¿Se contará con permisos del establecimiento y consentimiento de los participantes para el trabajo de campo? ¿Se tiene acceso real a los sujetos durante el segundo semestre?</p>
+          </li>
+          <li>
+            <span class="level-badge lb-amber">Dimensión Ética</span>
+            <p>¿Cómo se garantizará la honestidad en el manejo de información y el respeto por la comunidad educativa? Resguardo de confidencialidad, anonimato, consentimiento informado.</p>
+          </li>
+        </ul>
+        <div class="question-box" style="margin-top:1rem">
+          <div class="qb-label">Ejemplo de condición de viabilidad</div>
+          <div class="qb-example"><em>"Las investigaciones que se demoran más allá de lo previsto pueden no ser útiles cuando se concluyen, sea porque sus resultados no se aplican o porque el contexto cambió."</em> <span class="cite">Hernández et al., 2014, p. 41</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: ERRORES COMUNES -->
+  <section class="section" id="errores">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <div>
+        <div class="section-title">⚠️ Alerta: Errores Comunes</div>
+        <div class="section-subtitle">Basado en la práctica pedagógica de Investigación Educativa ULagos</div>
+      </div>
+    </div>
+
+    <div class="error-cards">
+      <div class="error-card">
+        <div class="error-header"><span>Error 1 — Verbos vagos o redacción informal</span></div>
+        <div class="error-body">
+          <p>Los objetivos deben tener precisión técnica. Expresiones coloquiales no son aceptables en un contexto académico.</p>
+          <div class="wrong">✗ "Mirar y decir qué hacen los profesores en clases importantes..."</div>
+          <div class="right">✓ "Identificar las estrategias pedagógicas que aplican docentes de matemáticas en establecimientos municipales de Osorno."</div>
+        </div>
+      </div>
+      <div class="error-card">
+        <div class="error-header"><span>Error 2 — Dos o más verbos en un objetivo</span></div>
+        <div class="error-body">
+          <p>Cada objetivo debe tener un único verbo principal. Usar dos verbos crea ambigüedad metodológica y dificulta la evaluación.</p>
+          <div class="wrong">✗ "Identificar y analizar las estrategias de enseñanza..."</div>
+          <div class="right">✓ Separar en dos objetivos específicos distintos: uno para identificar y otro para analizar.</div>
+        </div>
+      </div>
+      <div class="error-card">
+        <div class="error-header"><span>Error 3 — Específicos incongruentes con el general</span></div>
+        <div class="error-body">
+          <p>Los objetivos específicos deben ser los pasos lógicos para lograr el general, no temas distintos.</p>
+          <div class="wrong">✗ OG: Comparar prácticas educativas / OE: Estudiar dieta alimenticia...</div>
+          <div class="right">✓ Cada OE debe desprenderse directamente del Objetivo General.</div>
+        </div>
+      </div>
+      <div class="error-card">
+        <div class="error-header"><span>Error 4 — Específicos más complejos que el general</span></div>
+        <div class="error-body">
+          <p>Los OE no pueden requerir mayor complejidad o recursos que el OG. Eso transforma el estudio en algo inviable.</p>
+          <div class="wrong">✗ OG: Comparar prácticas / OE: Desarrollar modelo predictivo con IA...</div>
+          <div class="right">✓ Los OE deben estar en un nivel igual o menor de complejidad que el OG.</div>
+        </div>
+      </div>
+      <div class="error-card">
+        <div class="error-header"><span>Error 5 — Confundir objetivos con actividades</span></div>
+        <div class="error-body">
+          <p>Los objetivos de investigación no son actividades pedagógicas o intervenciones. No se investiga interviniendo (salvo diseños específicos).</p>
+          <div class="wrong">✗ "Realizar un taller de lectura con los estudiantes" / "Diseñar una guía..."</div>
+          <div class="right">✓ "Analizar las estrategias lectoras empleadas por estudiantes de 8° básico..."</div>
+        </div>
+      </div>
+      <div class="error-card">
+        <div class="error-header"><span>Error 6 — Pregunta que se responde con sí/no</span></div>
+        <div class="error-body">
+          <p>Las preguntas cerradas limitan el alcance de la investigación y no permiten una exploración profunda del fenómeno.</p>
+          <div class="wrong">✗ "¿Los profesores usan TIC en el aula?"</div>
+          <div class="right">✓ "¿De qué manera el uso de TIC incide en la motivación de estudiantes de 7° básico en Osorno?"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: CHECKLIST -->
+  <section class="section" id="checklist">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <div>
+        <div class="section-title">Checklist de Autoevaluación</div>
+        <div class="section-subtitle">Valida tu avance antes de la tutoría — 24 ítems</div>
+      </div>
+    </div>
+
+    <div class="checklist-grid">
+      <div class="checklist-section">
+        <div class="checklist-head ch-blue">📋 1.1 Fundamentación</div>
+        <div class="checklist-items">
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Hemos definido los conceptos clave usando autores especializados?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Incluimos investigaciones internacionales (UNESCO, OCDE) conectadas a estadísticas nacionales?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Identificamos leyes, decretos o marcos regulatorios chilenos relevantes (Ley de Inclusión, MBE, Decreto 67…)?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Incluimos resultados empíricos de investigaciones nacionales e internacionales (mín. 5 referencias, 80% últimos 5 años)?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Finalizamos el punto explicitando claramente la tensión o vacío detectado?</label></div>
+        </div>
+      </div>
+
+      <div class="checklist-section">
+        <div class="checklist-head ch-teal">📋 1.2 Justificación</div>
+        <div class="checklist-items">
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Explicamos por qué es útil esta investigación para el campo de estudio (Saber Pedagógico)?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Identificamos cómo este estudio ayuda a mejorar la práctica docente (Mejora de Aprendizajes)?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Utilizamos al menos uno de los criterios de Hernández et al. (2014)? (conveniencia, relevancia social, valor teórico)</label></div>
+        </div>
+      </div>
+
+      <div class="checklist-section">
+        <div class="checklist-head ch-blue">📋 1.3 Preguntas de Investigación</div>
+        <div class="checklist-items">
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿La pregunta es abierta? (¿Cómo, por qué, cuál…) y no se responde con sí o no.</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿La pregunta incluye: qué investigo, en quiénes y en qué lugar/tiempo?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Existe una conexión lógica entre la fundamentación y la pregunta?</label></div>
+        </div>
+      </div>
+
+      <div class="checklist-section">
+        <div class="checklist-head ch-teal">📋 1.4 Objetivos</div>
+        <div class="checklist-items">
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Los objetivos comienzan con un verbo en infinitivo?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Los objetivos están acorde a la taxonomía y fases de la investigación?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Hay coherencia entre la pregunta y el objetivo general? (deben comunicar lo mismo)</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Los objetivos específicos son los pasos lógicos para lograr el objetivo general?</label></div>
+        </div>
+      </div>
+
+      <div class="checklist-section">
+        <div class="checklist-head ch-amber">📋 1.5 Delimitación y Viabilidad</div>
+        <div class="checklist-items">
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Especificamos el nombre del establecimiento (si se sabe) o al menos el nivel escolar?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Consideramos la situación de mi práctica del segundo semestre?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Declaramos que tenemos acceso real a los sujetos para recoger información?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Mencionamos el resguardo de la confidencialidad y cómo será asegurado?</label></div>
+        </div>
+      </div>
+
+      <div class="checklist-section">
+        <div class="checklist-head ch-gray">📋 Formato y Rigurosidad</div>
+        <div class="checklist-items">
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿El texto tiene interlineado 1.5 y letra Times New Roman o Arial tamaño 12?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Todas las citas del texto aparecen en la bibliografía final en formato APA 7?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿El tono del escrito es académico, evitando el uso de la primera persona (yo, nosotros)?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿El documento se trabajó en Google Doc con conexión a internet?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Respetamos el número de páginas indicado en la pauta?</label></div>
+          <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>¿Declaramos el uso de IA en este informe según la pauta?</label></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION 7: BIBLIOGRAFÍA -->
+  <section class="section" id="bibliografia">
+    <div class="section-header">
+      <div class="section-number">9</div>
+      <div>
+        <div class="section-title">Referencias Bibliográficas</div>
+        <div class="section-subtitle">Fuentes base de la asignatura — formato APA 7</div>
+      </div>
+    </div>
+    <ul class="bib-list">
+      <li><strong>Ferreyra, A., & De Longhi, A. L. (2014).</strong> <em>Metodología de la investigación I</em> (1.ª ed.). Encuentro Grupo Editor. · Lecturas sugeridas: Cuestión 3 (pp. 69–73) y pp. 91–102</li>
+      <li><strong>Hernández Sampieri, R., Fernández Collado, C., & Baptista Lucio, P. (2014).</strong> <em>Metodología de la investigación</em> (6.ª ed.). McGraw-Hill Education. · Lecturas sugeridas: pp. 37–41; pp. 68–74; pp. 458–459</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <strong>Universidad de Los Lagos</strong> · Departamento de Educación · Investigación Educativa · Taller Informe N° 1 · JSA
+</footer>
+
+<script>
+  function toggleCollapse(trigger) {
+    trigger.classList.toggle('open');
+    const body = trigger.nextElementSibling;
+    body.classList.toggle('open');
+  }
+
+  function toggleCheck(item) {
+    const cb = item.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+    item.classList.toggle('checked', cb.checked);
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.check-item input[type="checkbox"]');
+    const checked = document.querySelectorAll('.check-item input[type="checkbox"]:checked');
+    const pct = Math.round((checked.length / all.length) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-pct').textContent = checked.length + ' / ' + all.length + ' ítems completados';
+  }
+</script>
+</body>
+</html>
