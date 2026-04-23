@@ -966,24 +966,49 @@
 </footer>
 
 <script>
-  // Este es el "interruptor" para abrir y cerrar las cajas
-  document.querySelectorAll('.collapse-trigger').forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const body = trigger.nextElementSibling;
-      
-      // Abre o cierra la caja actual
-      trigger.classList.toggle('open');
-      body.classList.toggle('open');
+  // ── COLLAPSIBLES ──────────────────────────────────────────────────────────
+  // Función llamada desde onclick="toggleCollapse(this)" en el HTML.
+  // Funciona tanto para .collapse-trigger (secciones principales)
+  // como para .collapse-header (verbos por fase).
+  function toggleCollapse(el) {
+    const body = el.nextElementSibling;
+    const isOpen = el.classList.contains('open');
 
-      // Cierra las demás para que se vea ordenado
-      document.querySelectorAll('.collapse-body').forEach(otherBody => {
-        if (otherBody !== body) {
-          otherBody.classList.remove('open');
-          otherBody.previousElementSibling.classList.remove('open');
-        }
-      });
+    // Cierra todos los colapsables del mismo tipo para mantener orden
+    document.querySelectorAll('.collapse-trigger, .collapse-header').forEach(other => {
+      if (other !== el) {
+        other.classList.remove('open');
+        const otherBody = other.nextElementSibling;
+        if (otherBody) otherBody.classList.remove('open');
+      }
     });
-  });
+
+    // Alterna el actual
+    el.classList.toggle('open', !isOpen);
+    if (body) body.classList.toggle('open', !isOpen);
+  }
+
+  // ── CHECKLIST ─────────────────────────────────────────────────────────────
+  function toggleCheck(item) {
+    const checkbox = item.querySelector('input[type="checkbox"]');
+    // Si el clic viene del propio checkbox, el estado ya cambió; si no, lo alternamos
+    if (event.target !== checkbox) {
+      checkbox.checked = !checkbox.checked;
+    }
+    item.classList.toggle('checked', checkbox.checked);
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const total = document.querySelectorAll('.check-item').length;
+    const done  = document.querySelectorAll('.check-item.checked').length;
+    const pct   = total ? Math.round((done / total) * 100) : 0;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-pct').textContent = done + ' / ' + total + ' ítems completados';
+  }
+
+  // Inicializa la barra al cargar
+  updateProgress();
 </script>
 
 </body>
