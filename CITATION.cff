@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "Si utilizas este recurso, por favor cítalo como se indica a continuación."
+authors:
+- family-names: "Sánchez Alvarado"
+  given-names: "Jesús"
+  # orcid: "https://orcid.org/0009-0000-1607-9452"
+title: "Guía Interactiva de Planteamiento del Problema — ULagos"
+version: 1.0.0
+date-released: 2026-04-23
+url: "https://github.com/jesussanchezalvarado-lab/Investigacion-Educativa"
+abstract: >-
+  Recurso interactivo diseñado para la asignatura de Investigación Educativa 
+  del Departamento de Educación de la Universidad de Los Lagos. Incluye 
+  orientaciones para la formulación de preguntas, objetivos y criterios de viabilidad.
+keywords:
+  - Investigación Educativa
+  - Universidad de Los Lagos
+  - Metodología de la investigación
+  - Objetivos de investigación
+license: CC-BY-NC-4.0
