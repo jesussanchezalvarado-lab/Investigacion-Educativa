@@ -960,6 +960,26 @@
     </small>
   </div>
 </footer>
+<script>
+  // Seleccionamos todos los botones que activan las cajas
+  document.querySelectorAll('.collapse-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      // 1. Buscamos el cuerpo de la caja que está justo debajo del botón
+      const body = trigger.nextElementSibling;
+      
+      // 2. Alternamos la clase 'open' en el botón y en el cuerpo
+      trigger.classList.toggle('open');
+      body.classList.toggle('open');
 
+      // 3. Esto es opcional: cierra las otras cajas cuando abres una (estilo acordeón)
+      document.querySelectorAll('.collapse-body').forEach(otherBody => {
+        if (otherBody !== body) {
+          otherBody.classList.remove('open');
+          otherBody.previousElementSibling.classList.remove('open');
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
